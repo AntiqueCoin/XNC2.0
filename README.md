@@ -1,24 +1,26 @@
-AntiqueCoin
+# AntiqueCoin
 
 Release ver 2.0. new Feature is
 
-Support ERC-20 based Token Ecosystem.
-Distribute and Transfer your Antique Register Certificate integrates IPFS file hash.
-Version 2.0
+- Support ERC-20 based Token Ecosystem.
+- Distribute and Transfer your Antique Register Certificate integrates IPFS file hash.
+
+## Version 2.0
 
 Contract alredy deployed on etheruem network.
 
 https://etherscan.io/address/0xd7f3fce21bcf0b082d4f0144bd8582cb190c5868
 
-Register token spec
+## Register token spec
 
-Function registerAntique
+### Function registerAntique
 
 Antique Contract support some modules that AntiqueCoin Certificate file Hash. if you have file or file Identity, you can regster new Antique Registry.
 
 params
+-  **_filehash** byte32
 
-_filehash byte32
+```
 function registerAntique(bytes32 _fileHash) returns (bool success){
     if (msg.sender != founder) throw;
     //  if (antiques[_fileHash] != 0x0) throw;
@@ -26,30 +28,44 @@ function registerAntique(bytes32 _fileHash) returns (bool success){
     RegistrationAntique(_fileHash);
     return true;
 }
-Function transfer Antique
+```
+
+### Function transfer Antique
 
 params
+-  **_to** address
+-  **_filehash** byte32
 
-_to address
-_filehash byte32
+
+```
 function transferAntique(address _to, bytes32 _fileHash) returns (bool success){
       if (antiques[_fileHash] != msg.sender) throw;
       antiques[_fileHash] = _to;
       TransferAntique(_fileHash, msg.sender, _to);
       return true;
 }
-getting started
+```
 
-if not install nodejs and truffle platform, you can see follow this link. http://truffle.readthedocs.io/en/beta/getting_started/installation/
+## getting started 
+
+if not install nodejs and truffle platform, you can see follow this link.
+http://truffle.readthedocs.io/en/beta/getting_started/installation/
 
 https://nodejs.org/en/download/
 
+
+```
 $ npm install
 
-test
+```
+## test
 
+
+```
 $ truffle migrate --network testrpc
-LICENCE
+```
+
+## LICENCE
 
 Copyright 2017 AntiqueRegistry team
 
